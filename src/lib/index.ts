@@ -1,4 +1,4 @@
-export const getMinutePriceDEPRECATED = (ddd1: number, ddd2: number) => {
+export const getMinutePrice = (ddd1: number, ddd2: number) => {
   if (ddd1 === 11 && ddd2 === 16) return 1.9;
   if (ddd1 === 16 && ddd2 === 11) return 2.9;
   if (ddd1 === 11 && ddd2 === 17) return 1.7;
