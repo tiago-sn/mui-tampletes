@@ -1,11 +1,22 @@
-export const getMinutePrice = (ddd1: number, ddd2: number) => {
-  if (ddd1 === 11 && ddd2 === 16) return 1.9;
-  if (ddd1 === 16 && ddd2 === 11) return 2.9;
-  if (ddd1 === 11 && ddd2 === 17) return 1.7;
-  if (ddd1 === 17 && ddd2 === 11) return 2.7;
-  if (ddd1 === 11 && ddd2 === 18) return 0.9;
-  if (ddd1 === 18 && ddd2 === 11) return 1.9;
+export const getMinutePrice = ddd => {
+  if (ddd === 1116) return 1.9;
+  if (ddd === 1611) return 2.9;
+  if (ddd === 1117) return 1.7;
+  if (ddd === 1711) return 2.7;
+  if (ddd === 1118) return 0.9;
+  if (ddd === 1811) return 1.9;
   return 0;
+};
+
+export const getTotal = (
+  minutePrice: number,
+  minutes: number,
+  plan?: number
+) => {
+  let price: number;
+
+  price = plan ? (minutes - plan) * minutePrice : minutes * minutePrice;
+  return plan > 0 ? plan : 0;
 };
 
 export const priceWithPlan = (
@@ -21,6 +32,5 @@ export const priceWithPlan = (
 
 export const priceWithOutPlan = (pricePerMinute: number, minutes: number) => {
   const price = minutes * pricePerMinute;
-  // if (price < 0) return 0;
   return price;
 };
