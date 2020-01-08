@@ -41,11 +41,12 @@ describe('src/lib/index/getTotal()', () => {
     expect(price).toBe(0);
   });
 
-  it('from 11 to 16 without plan', () => {
+  it('from 11 to 16 with plan = 0', () => {
     const minutePrice = 1.9,
-      minutes = 20;
+      minutes = 20,
+      plan = 0;
 
-    const price = getTotal(minutePrice, minutes);
+    const price = getTotal(minutePrice, minutes, plan);
     expect(price).toBe(38);
   });
 
