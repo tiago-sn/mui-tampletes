@@ -1,3 +1,6 @@
+import { PriceTable } from './types';
+import { priceTable } from './priceTable';
+
 /**
  * @param {number} from
  * @param {number} to
@@ -14,7 +17,7 @@ export default (
   to: 11 | 16 | 17 | 18,
   minutes: number
 ) => {
-  const minutePrice = getMinutePrice(from, to);
+  const minutePrice = getMinutePrice(from, to, priceTable);
   const plans = [0, 30, 60, 120];
 
   if (minutePrice === 0) {
@@ -38,7 +41,20 @@ export default (
  *
  * @returns {number} - minute cost. if it returns 0, at least one param is invalid.
  */
-export const getMinutePrice = (ddd1: number, ddd2: number) => {
+export const getMinutePrice = (
+  ddd1: number,
+  ddd2: number,
+  priceTable: PriceTable
+) => {
+  const price = priceTable.filter(price => {
+    if (price.from === ddd1 && price.to === ddd2) return true;
+    else return false;
+  });
+
+  return price[0].value;
+};
+
+export const getMinutePriceDEPRECATED = (ddd1: number, ddd2: number) => {
   if (ddd1 === 11 && ddd2 === 16) return 1.9;
   if (ddd1 === 16 && ddd2 === 11) return 2.9;
   if (ddd1 === 11 && ddd2 === 17) return 1.7;
