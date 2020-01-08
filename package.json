@@ -24,7 +24,7 @@
     "webpack-merge": "^4.2.2"
   },
   "scripts": {
-    "start": "ts-node src/main.ts",
+    "start": "webpack-dev-server --config webpack.dev.ts --open",
     "test": "jest --watch"
   },
   "dependencies": {
