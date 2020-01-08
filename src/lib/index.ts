@@ -61,7 +61,11 @@ export const getTotal = (
 
   const minutePriceWithTax = minutePrice + minutePrice * 0.1;
 
-  price = plan ? (minutes - plan) * minutePriceWithTax : minutes * minutePrice;
+  if (!plan) {
+    price = minutes * minutePrice;
+  } else if (minutes > plan) {
+    price = (minutes - plan) * minutePriceWithTax;
+  }
 
   return price > 0 ? price : 0;
 };
