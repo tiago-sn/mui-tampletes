@@ -55,7 +55,9 @@ export const getTotal = (
 ) => {
   let price: number;
 
-  price = plan ? (minutes - plan) * minutePrice : minutes * minutePrice;
+  const minutePriceWithTax = minutePrice + minutePrice * 0.1;
+
+  price = plan ? (minutes - plan) * minutePriceWithTax : minutes * minutePrice;
 
   return price > 0 ? price : 0;
 };
