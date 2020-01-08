@@ -1,4 +1,4 @@
-import { getMinutePrice, getTotal } from '../index';
+import telzir, { getMinutePrice, getTotal } from '../index';
 import { priceTable } from '../priceTable';
 
 describe('src/lib/index/getMinutePrice()', () => {
@@ -83,5 +83,23 @@ describe('src/lib/index/getTotal()', () => {
 
     const price = getTotal(minutePrice, minutes);
     expect(price).toBe(380);
+  });
+});
+
+describe('default export: telzir', () => {
+  it('ddd1 = 11, ddd2 = 16, minutes = 20', () => {
+    const [plan0, plan30, plan60, plan120] = telzir(11, 16, 20);
+    expect(plan0).toBe(38);
+    expect(plan30).toBe(0);
+    expect(plan60).toBe(0);
+    expect(plan120).toBe(0);
+  });
+
+  it('ddd1 = 11, ddd2 = 17, minutes = 80', () => {
+    const [plan0, plan30, plan60, plan120] = telzir(11, 17, 80);
+    expect(plan0).toBe(136);
+    expect(plan30).toBe(93.5);
+    expect(plan60).toBe(37.4);
+    expect(plan120).toBe(0);
   });
 });
