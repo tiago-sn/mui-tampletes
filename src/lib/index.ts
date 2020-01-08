@@ -22,8 +22,6 @@ export default (
 
   if (minutePrice === 0) {
     throw new Error('DDD inválido');
-
-    return null;
   }
 
   let total: number[] = [];
