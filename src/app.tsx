@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import simulate from './lib';
-import SimulationPanel from './components/Form';
+import Form from './components/Form';
 import { ReactChangeEvent, State, ReactMouseEvent, DDD } from './app.types';
 import reducer from './reducer';
 
@@ -30,7 +30,7 @@ const App: React.FC = () => {
   const { from, to, minutes } = state;
   const formState = { from, to, minutes };
   return (
-    <SimulationPanel
+    <Form
       onInputChange={selectDDD}
       onSimulate={onSimulate}
       formState={formState}
