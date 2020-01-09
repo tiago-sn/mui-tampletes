@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import simulate from './lib';
-import SimulationPanel from './components/SimulationPanel';
+import SimulationPanel from './components/Form';
 import { ReactChangeEvent, State, ReactMouseEvent, DDD } from './app.types';
 import reducer from './reducer';
 
