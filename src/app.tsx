@@ -5,8 +5,8 @@ import { ReactChangeEvent, State, ReactMouseEvent, DDD } from './app.types';
 import reducer from './reducer';
 
 const initialState: State = {
-  from: 11,
-  to: 16,
+  from: 0,
+  to: 0,
   minutes: 0,
   simulations: []
 };
@@ -24,9 +24,18 @@ const App: React.FC = () => {
     const { from, to, minutes } = state;
     const simulations = simulate(from as DDD, to as DDD, minutes as DDD);
     dispatch({ type: 'addSimulation', value: simulations });
+    dispatch({ type: 'cleanForm' });
   };
 
-  return <SimulationPanel onInputChange={selectDDD} onSimulate={onSimulate} />;
+  const { from, to, minutes } = state;
+  const formState = { from, to, minutes };
+  return (
+    <SimulationPanel
+      onInputChange={selectDDD}
+      onSimulate={onSimulate}
+      formState={formState}
+    />
+  );
 };
 
 export default App;

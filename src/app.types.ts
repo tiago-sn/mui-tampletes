@@ -17,6 +17,7 @@ export type Action =
   | { type: 'from'; value: number }
   | { type: 'to'; value: number }
   | { type: 'minutes'; value: number }
-  | { type: 'addSimulation'; value: number[] };
+  | { type: 'addSimulation'; value: number[] }
+  | { type: 'cleanForm' };
 
 export type DDD = 11 | 16 | 17 | 18;

@@ -12,6 +12,9 @@ export default (state: State, action: Action) => {
       const { simulations } = state;
       simulations.push(action.value);
       return { ...state, simulations };
+    case 'cleanForm':
+      const { from, to, minutes } = state;
+      return { ...state, from: 0, to: 0, minutes: 0 };
     default:
       return state;
   }
