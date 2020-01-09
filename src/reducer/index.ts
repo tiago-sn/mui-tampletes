@@ -6,6 +6,8 @@ export default (state: State, action: Action) => {
       return { ...state, from: action.value };
     case 'to':
       return { ...state, to: action.value };
+    case 'minutes':
+      return { ...state, minutes: action.value };
     default:
       return state;
   }

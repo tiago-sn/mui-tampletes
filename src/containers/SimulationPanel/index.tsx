@@ -2,12 +2,12 @@ import React from 'react';
 import { Input } from '@material-ui/core';
 
 interface IProps {
-  onSelectDDD: (
+  onInputChange: (
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => void;
 }
 
-const SimulationPanel: React.FC<IProps> = ({ onSelectDDD }) => {
+const SimulationPanel: React.FC<IProps> = ({ onInputChange }) => {
   return (
     <>
       <Input
@@ -15,14 +15,21 @@ const SimulationPanel: React.FC<IProps> = ({ onSelectDDD }) => {
         name="from"
         placeholder="From"
         required
-        onChange={onSelectDDD}
+        onChange={onInputChange}
       />
       <Input
         type="number"
         name="to"
         placeholder="To"
         required
-        onChange={onSelectDDD}
+        onChange={onInputChange}
+      />
+      <Input
+        type="number"
+        name="minutes"
+        placeholder="Minutes"
+        required
+        onChange={onInputChange}
       />
     </>
   );
