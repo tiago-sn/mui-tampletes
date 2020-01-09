@@ -1,13 +1,15 @@
 import React from 'react';
-import { Input } from '@material-ui/core';
+import { Input, Button } from '@material-ui/core';
 
 interface IProps {
   onInputChange: (
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => void;
+
+  onSimulate: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-const SimulationPanel: React.FC<IProps> = ({ onInputChange }) => {
+const SimulationPanel: React.FC<IProps> = ({ onInputChange, onSimulate }) => {
   return (
     <>
       <Input
@@ -31,6 +33,9 @@ const SimulationPanel: React.FC<IProps> = ({ onInputChange }) => {
         required
         onChange={onInputChange}
       />
+      <Button color="primary" variant="contained" onClick={onSimulate}>
+        Simulate
+      </Button>
     </>
   );
 };
