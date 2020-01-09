@@ -9,7 +9,7 @@ export default (state: State, action: Action) => {
     case 'minutes':
       return { ...state, minutes: action.value };
     case 'addSimulation':
-      const simulations = state.simulations;
+      const { simulations } = state;
       simulations.push(action.value);
       return { ...state, simulations };
     default:
