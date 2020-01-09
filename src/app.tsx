@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import SimulationPanel from './containers/SimulationPanel';
+import SimulationPanel from './components/SimulationPanel';
 import { ReactChangeEvent, State, Action } from './app.types';
 import reducer from './reducer';
 
