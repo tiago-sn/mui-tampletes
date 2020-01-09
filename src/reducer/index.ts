@@ -8,6 +8,10 @@ export default (state: State, action: Action) => {
       return { ...state, to: action.value };
     case 'minutes':
       return { ...state, minutes: action.value };
+    case 'addSimulation':
+      const simulations = state.simulations;
+      simulations.push(action.value);
+      return { ...state, simulations };
     default:
       return state;
   }
