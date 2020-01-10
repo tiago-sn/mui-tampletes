@@ -1,26 +1,71 @@
-export const getMinutePriceDEPRECATED = (ddd1: number, ddd2: number) => {
-  if (ddd1 === 11 && ddd2 === 16) return 1.9;
-  if (ddd1 === 16 && ddd2 === 11) return 2.9;
-  if (ddd1 === 11 && ddd2 === 17) return 1.7;
-  if (ddd1 === 17 && ddd2 === 11) return 2.7;
-  if (ddd1 === 11 && ddd2 === 18) return 0.9;
-  if (ddd1 === 18 && ddd2 === 11) return 1.9;
-  return 0;
-};
+import { PriceTable } from './types';
+import { priceTable } from './priceTable';
 
-export const priceWithPlan = (
-  pricePerMinute: number,
-  minutes: number,
-  plan: number
+/**
+ * @param {number} from
+ * @param {number} to
+ * @param {number} minutes
+ *
+ * @returns {number[]} total - is an array of 4 values:
+ * total[0] = price withou FaleMais
+ * total[1] = price with FaleMais 30 minutos
+ * total[2] = price with FaleMais 60 minutos
+ * total[3] = price with FaleMais 120 minutos
+ */
+export default (
+  from: 11 | 16 | 17 | 18,
+  to: 11 | 16 | 17 | 18,
+  minutes: number
 ) => {
-  pricePerMinute += pricePerMinute * 0.1;
-  const price = (minutes - plan) * pricePerMinute;
-  if (price < 0) return 0;
-  return price;
+  const minutePrice = getMinutePrice(from, to, priceTable);
+  const plans = [0, 30, 60, 120];
+
+  if (minutePrice === 0) {
+    throw new Error('DDD inválido');
+  }
+
+  let total: number[] = [];
+
+  total = plans.map(plan => {
+    return getTotal(minutePrice, minutes, plan);
+  });
+
+  return total;
 };
 
-export const priceWithOutPlan = (pricePerMinute: number, minutes: number) => {
-  const price = minutes * pricePerMinute;
-  // if (price < 0) return 0;
-  return price;
+/**
+ * @param {number} from
+ * @param {number} to
+ *
+ * @returns {number} - minute cost. if it returns 0, at least one param is invalid.
+ */
+export const getMinutePrice = (
+  ddd1: number,
+  ddd2: number,
+  priceTable: PriceTable
+) => {
+  const price = priceTable.filter(price => {
+    if (price.from === ddd1 && price.to === ddd2) return true;
+    else return false;
+  });
+
+  return price[0].value;
+};
+
+export const getTotal = (
+  minutePrice: number,
+  minutes: number,
+  plan?: number
+) => {
+  let price: number = 0;
+
+  const minutePriceWithTax = minutePrice + minutePrice * 0.1;
+
+  if (!plan) {
+    price = minutes * minutePrice;
+  } else if (minutes > plan) {
+    price = (minutes - plan) * minutePriceWithTax;
+  }
+
+  return price > 0 ? price : 0;
 };
