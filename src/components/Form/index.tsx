@@ -22,7 +22,7 @@ const SimulationPanel: React.FC<IProps> = ({
     <Input
       type="number"
       name="from"
-      placeholder="From"
+      placeholder="De"
       required
       onChange={onInputChange}
       value={from ? from : ''}
@@ -31,7 +31,7 @@ const SimulationPanel: React.FC<IProps> = ({
     <Input
       type="number"
       name="to"
-      placeholder="To"
+      placeholder="Para"
       required
       onChange={onInputChange}
       value={to ? to : ''}
@@ -40,7 +40,7 @@ const SimulationPanel: React.FC<IProps> = ({
     <Input
       type="number"
       name="minutes"
-      placeholder="Minutes"
+      placeholder="Minutos"
       required
       onChange={onInputChange}
       value={minutes ? minutes : ''}
@@ -49,7 +49,7 @@ const SimulationPanel: React.FC<IProps> = ({
     <br />
     <br />
     <Button color="primary" variant="contained" onClick={onSimulate}>
-      Simulate
+      Simular
     </Button>
   </Container>
 );
