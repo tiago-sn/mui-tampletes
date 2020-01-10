@@ -31,7 +31,9 @@ const SimulationTable: React.FC<IProps> = ({ simulations }) => {
           {simulations.map((simulation, i) => (
             <TableRow key={i}>
               {simulation.map((value, i) => (
-                <TableCell key={i}>{value}</TableCell>
+                <TableCell key={i}>
+                  {i > 2 ? value.toFixed(2) : value}
+                </TableCell>
               ))}
             </TableRow>
           ))}
