@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Button } from '@material-ui/core';
+import { Input, Button, Container } from '@material-ui/core';
 
 interface IProps {
   onInputChange: (
@@ -17,38 +17,41 @@ const SimulationPanel: React.FC<IProps> = ({
   onInputChange,
   onSimulate,
   formState: { from, to, minutes }
-}) => {
-  return (
-    <>
-      <Input
-        type="number"
-        name="from"
-        placeholder="From"
-        required
-        onChange={onInputChange}
-        value={from ? from : null}
-      />
-      <Input
-        type="number"
-        name="to"
-        placeholder="To"
-        required
-        onChange={onInputChange}
-        value={to ? to : null}
-      />
-      <Input
-        type="number"
-        name="minutes"
-        placeholder="Minutes"
-        required
-        onChange={onInputChange}
-        value={minutes ? minutes : null}
-      />
-      <Button color="primary" variant="contained" onClick={onSimulate}>
-        Simulate
-      </Button>
-    </>
-  );
-};
+}) => (
+  <Container maxWidth="xs">
+    <Input
+      type="number"
+      name="from"
+      placeholder="From"
+      required
+      onChange={onInputChange}
+      value={from ? from : ''}
+      fullWidth
+    />
+    <Input
+      type="number"
+      name="to"
+      placeholder="To"
+      required
+      onChange={onInputChange}
+      value={to ? to : ''}
+      fullWidth
+    />
+    <Input
+      type="number"
+      name="minutes"
+      placeholder="Minutes"
+      required
+      onChange={onInputChange}
+      value={minutes ? minutes : ''}
+      fullWidth
+    />
+    <br />
+    <br />
+    <Button color="primary" variant="contained" onClick={onSimulate}>
+      Simulate
+    </Button>
+  </Container>
+);
 
 export default SimulationPanel;
