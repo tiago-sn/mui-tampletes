@@ -3,6 +3,7 @@ import { Container, Grid } from '@material-ui/core';
 import simulate from './lib';
 import Form from './components/Form';
 import Table from './components/Table';
+import Header from './components/Header';
 import { ReactChangeEvent, State, ReactMouseEvent, DDD } from './app.types';
 import reducer from './reducer';
 
@@ -30,17 +31,18 @@ const App: React.FC = () => {
     dispatch({ type: 'cleanForm' });
   };
 
-  const { from, to, minutes } = state;
+  const { from, to, minutes, simulations } = state;
   const formState = { from, to, minutes };
   return (
     <Container maxWidth="md">
       <Grid container>
+        <Header />
         <Form
           onInputChange={selectDDD}
           onSimulate={onSimulate}
           formState={formState}
         />
-        <Table simulations={state.simulations} />
+        <Table simulations={simulations} />
       </Grid>
     </Container>
   );
