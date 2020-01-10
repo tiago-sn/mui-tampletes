@@ -18,10 +18,10 @@ const SimulationTable: React.FC<IProps> = ({ simulations }) => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>From</TableCell>
-            <TableCell>To</TableCell>
-            <TableCell>Minutes</TableCell>
-            <TableCell>Withou Fale Mais</TableCell>
+            <TableCell>De</TableCell>
+            <TableCell>Para</TableCell>
+            <TableCell>Minutos</TableCell>
+            <TableCell>Sem Fale Mais</TableCell>
             <TableCell>Fale Mais 30</TableCell>
             <TableCell>Fale Mais 60</TableCell>
             <TableCell>Fale Mais 120</TableCell>
