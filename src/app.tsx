@@ -1,6 +1,8 @@
 import React, { useReducer } from 'react';
+import { Container, Grid } from '@material-ui/core';
 import simulate from './lib';
 import Form from './components/Form';
+import Table from './components/Table';
 import { ReactChangeEvent, State, ReactMouseEvent, DDD } from './app.types';
 import reducer from './reducer';
 
@@ -23,18 +25,24 @@ const App: React.FC = () => {
   const onSimulate = (e: ReactMouseEvent) => {
     const { from, to, minutes } = state;
     const simulations = simulate(from as DDD, to as DDD, minutes as DDD);
-    dispatch({ type: 'addSimulation', value: simulations });
+    const value = [from, to, minutes, ...simulations];
+    dispatch({ type: 'addSimulation', value });
     dispatch({ type: 'cleanForm' });
   };
 
   const { from, to, minutes } = state;
   const formState = { from, to, minutes };
   return (
-    <Form
-      onInputChange={selectDDD}
-      onSimulate={onSimulate}
-      formState={formState}
-    />
+    <Container maxWidth="md">
+      <Grid container>
+        <Form
+          onInputChange={selectDDD}
+          onSimulate={onSimulate}
+          formState={formState}
+        />
+        <Table simulations={state.simulations} />
+      </Grid>
+    </Container>
   );
 };
 
