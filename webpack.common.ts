@@ -29,7 +29,7 @@ const config: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/template.html',
-      title: 'Telzir'
+      title: 'Mui Tamplates'
     })
   ]
 };
