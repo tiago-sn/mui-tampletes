@@ -1,7 +1,8 @@
 import React from 'react';
+import SinginSide from './pages/signin-side';
 
 const App: React.FC = () => {
-  return <h1>Funcionando</h1>;
+  return <SinginSide />;
 };
 
 export default App;

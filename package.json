@@ -3,6 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.dev.ts --open",
+    "test": "jest --watch",
+    "lint": "eslint --ext .ts,.tsx src/**/**/*"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.8.3",
+    "@material-ui/icons": "^4.5.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
   "devDependencies": {
     "@types/html-webpack-plugin": "^3.2.1",
     "@types/jest": "^24.0.25",
@@ -11,6 +22,10 @@
     "@types/react-dom": "^16.9.4",
     "@types/webpack": "^4.41.2",
     "@types/webpack-merge": "^4.1.5",
+    "@typescript-eslint/eslint-plugin": "^2.17.0",
+    "@typescript-eslint/parser": "^2.17.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.18.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.9.0",
     "source-map-loader": "^0.2.4",
@@ -22,14 +37,5 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1",
     "webpack-merge": "^4.2.2"
-  },
-  "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.ts --open",
-    "test": "jest --watch"
-  },
-  "dependencies": {
-    "@material-ui/core": "^4.8.3",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
   }
 }
