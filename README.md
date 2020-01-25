@@ -1,11 +1,13 @@
-# telzir-lib
+# Mui Tamplates
 
 ## To run the project:
 
 ```bash
 yarn start
 ```
+
 or
+
 ```bash
 npm run start
 ```
